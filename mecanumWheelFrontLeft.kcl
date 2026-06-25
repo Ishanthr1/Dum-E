@@ -1,0 +1,122 @@
+// Mecanum wheel front left
+// Dedicated duplicate wheel source for stable assembly instancing.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import unitBox, unitCylinder from "robotPrimitives.kcl"
+
+wheelDiameter = 68mm
+wheelWidth = 42mm
+rimDiameter = 58mm
+hubDiameter = 38mm
+hubWidth = 48mm
+rollerDiameter = 14mm
+rollerLength = 34mm
+rollerOrbit = 39mm
+spokeLength = 21mm
+spokeWidth = 5mm
+
+mainTire = clone(unitCylinder)
+  |> scale(
+       x = wheelDiameter / 1mm,
+       y = wheelDiameter / 1mm,
+       z = wheelWidth / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+leftRimPlate = clone(unitCylinder)
+  |> scale(
+       x = rimDiameter / 1mm,
+       y = rimDiameter / 1mm,
+       z = 4mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(x = -hubWidth / 2, global = true)
+rightRimPlate = clone(leftRimPlate)
+  |> translate(x = hubWidth, global = true)
+centerHub = clone(unitCylinder)
+  |> scale(
+       x = hubDiameter / 1mm,
+       y = hubDiameter / 1mm,
+       z = hubWidth / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+hubSpokeSeed = clone(unitBox)
+  |> scale(
+       x = 5mm / 1mm,
+       y = spokeWidth / 1mm,
+       z = spokeLength / 1mm,
+       global = true,
+     )
+  |> translate(z = 12mm, global = true)
+hubSpokes = patternCircular3d(
+  hubSpokeSeed,
+  instances = 10,
+  axis = X,
+  center = [0mm, 0mm, 0mm],
+  arcDegrees = 360deg,
+  rotateDuplicates = true,
+)
+rollerSeed = clone(unitCylinder)
+  |> scale(
+       x = rollerDiameter / 1mm,
+       y = rollerDiameter / 1mm,
+       z = rollerLength / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> rotate(axis = Z, angle = 28deg, global = true)
+  |> translate(z = rollerOrbit, global = true)
+rollers = patternCircular3d(
+  rollerSeed,
+  instances = 10,
+  axis = X,
+  center = [0mm, 0mm, 0mm],
+  arcDegrees = 360deg,
+  rotateDuplicates = true,
+)
+axleCap = clone(unitCylinder)
+  |> scale(
+       x = 16mm / 1mm,
+       y = 16mm / 1mm,
+       z = 52mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+blackRubberGroup = appearance(
+  mainTire,
+  color = "#151515",
+  roughness = 86,
+  metalness = 0,
+)
+greyHubGroup = appearance(
+  flatten([
+    leftRimPlate,
+    rightRimPlate,
+    centerHub,
+    hubSpokes
+  ]),
+  color = "#777d7f",
+  roughness = 48,
+  metalness = 38,
+)
+orangeRollerGroup = appearance(
+  rollers,
+  color = "#f5822a",
+  roughness = 72,
+  metalness = 0,
+)
+darkAxleGroup = appearance(
+  axleCap,
+  color = "#2b3033",
+  roughness = 56,
+  metalness = 46,
+)
+
+export allBodies = flatten([
+  blackRubberGroup,
+  greyHubGroup,
+  orangeRollerGroup,
+  darkAxleGroup
+])

@@ -1,0 +1,340 @@
+// Articulated robot arm
+// Twin-plate servo arm with visible slot plates and pivot hardware.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import unitBox, unitCylinder from "robotPrimitives.kcl"
+
+plateOffsetX = 23mm
+lowerLinkLength = 96mm
+upperLinkLength = 86mm
+linkPlateWidth = 6mm
+linkPlateHeight = 17mm
+shoulderY = 0mm
+shoulderZ = 0mm
+elbowY = 36mm
+elbowZ = 88mm
+wristY = -20mm
+wristZ = 154mm
+orangeGold = "#dda34a"
+dark = "#101317"
+black = "#050607"
+steel = "#c2c7c8"
+
+shoulderServo = clone(unitBox)
+  |> scale(
+       x = 74mm / 1mm,
+       y = 46mm / 1mm,
+       z = 40mm / 1mm,
+       global = true,
+     )
+  |> translate(y = shoulderY, z = shoulderZ, global = true)
+elbowServo = clone(unitBox)
+  |> scale(
+       x = 62mm / 1mm,
+       y = 38mm / 1mm,
+       z = 36mm / 1mm,
+       global = true,
+     )
+  |> translate(y = elbowY, z = elbowZ, global = true)
+wristServo = clone(unitBox)
+  |> scale(
+       x = 48mm / 1mm,
+       y = 32mm / 1mm,
+       z = 30mm / 1mm,
+       global = true,
+     )
+  |> translate(y = wristY, z = wristZ, global = true)
+
+lowerLinkRaw = clone(unitBox)
+  |> scale(
+       x = linkPlateWidth / 1mm,
+       y = lowerLinkLength / 1mm,
+       z = linkPlateHeight / 1mm,
+       global = true,
+     )
+leftLowerLink = clone(lowerLinkRaw)
+  |> rotate(axis = X, angle = 68deg, global = true)
+  |> translate(
+       x = -plateOffsetX,
+       y = 18mm,
+       z = 44mm,
+       global = true,
+     )
+rightLowerLink = clone(lowerLinkRaw)
+  |> rotate(axis = X, angle = 68deg, global = true)
+  |> translate(
+       x = plateOffsetX,
+       y = 18mm,
+       z = 44mm,
+       global = true,
+     )
+
+upperLinkRaw = clone(unitBox)
+  |> scale(
+       x = linkPlateWidth / 1mm,
+       y = upperLinkLength / 1mm,
+       z = linkPlateHeight / 1mm,
+       global = true,
+     )
+leftUpperLink = clone(upperLinkRaw)
+  |> rotate(axis = X, angle = 130deg, global = true)
+  |> translate(
+       x = -plateOffsetX,
+       y = 8mm,
+       z = 121mm,
+       global = true,
+     )
+rightUpperLink = clone(upperLinkRaw)
+  |> rotate(axis = X, angle = 130deg, global = true)
+  |> translate(
+       x = plateOffsetX,
+       y = 8mm,
+       z = 121mm,
+       global = true,
+     )
+
+leftLowerSlotA = clone(unitBox)
+  |> scale(
+       x = 1.2mm / 1mm,
+       y = 25mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -22mm, global = true)
+  |> rotate(axis = X, angle = 68deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 3.7mm,
+       y = 18mm,
+       z = 44mm,
+       global = true,
+     )
+leftLowerSlotB = clone(unitBox)
+  |> scale(
+       x = 1.2mm / 1mm,
+       y = 25mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 22mm, global = true)
+  |> rotate(axis = X, angle = 68deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 3.7mm,
+       y = 18mm,
+       z = 44mm,
+       global = true,
+     )
+rightLowerSlotA = clone(leftLowerSlotA)
+  |> translate(x = (plateOffsetX + 3.7mm) * 2, global = true)
+rightLowerSlotB = clone(leftLowerSlotB)
+  |> translate(x = (plateOffsetX + 3.7mm) * 2, global = true)
+leftUpperSlotA = clone(unitBox)
+  |> scale(
+       x = 1.2mm / 1mm,
+       y = 22mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -18mm, global = true)
+  |> rotate(axis = X, angle = 130deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 3.7mm,
+       y = 8mm,
+       z = 121mm,
+       global = true,
+     )
+leftUpperSlotB = clone(unitBox)
+  |> scale(
+       x = 1.2mm / 1mm,
+       y = 22mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 18mm, global = true)
+  |> rotate(axis = X, angle = 130deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 3.7mm,
+       y = 8mm,
+       z = 121mm,
+       global = true,
+     )
+rightUpperSlotA = clone(leftUpperSlotA)
+  |> translate(x = (plateOffsetX + 3.7mm) * 2, global = true)
+rightUpperSlotB = clone(leftUpperSlotB)
+  |> translate(x = (plateOffsetX + 3.7mm) * 2, global = true)
+
+shoulderAxle = clone(unitCylinder)
+  |> scale(
+       x = 18mm / 1mm,
+       y = 18mm / 1mm,
+       z = 66mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(y = shoulderY, z = shoulderZ, global = true)
+elbowAxle = clone(unitCylinder)
+  |> scale(
+       x = 20mm / 1mm,
+       y = 20mm / 1mm,
+       z = 70mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(y = elbowY, z = elbowZ, global = true)
+wristAxle = clone(unitCylinder)
+  |> scale(
+       x = 16mm / 1mm,
+       y = 16mm / 1mm,
+       z = 58mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(y = wristY, z = wristZ, global = true)
+
+shoulderDiscLeft = clone(unitCylinder)
+  |> scale(
+       x = 31mm / 1mm,
+       y = 31mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 5mm,
+       y = shoulderY,
+       z = shoulderZ,
+       global = true,
+     )
+shoulderDiscRight = clone(shoulderDiscLeft)
+  |> translate(x = (plateOffsetX + 5mm) * 2, global = true)
+elbowDiscLeft = clone(unitCylinder)
+  |> scale(
+       x = 35mm / 1mm,
+       y = 35mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 5mm,
+       y = elbowY,
+       z = elbowZ,
+       global = true,
+     )
+elbowDiscRight = clone(elbowDiscLeft)
+  |> translate(x = (plateOffsetX + 5mm) * 2, global = true)
+wristDiscLeft = clone(unitCylinder)
+  |> scale(
+       x = 26mm / 1mm,
+       y = 26mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(
+       x = -plateOffsetX - 5mm,
+       y = wristY,
+       z = wristZ,
+       global = true,
+     )
+wristDiscRight = clone(wristDiscLeft)
+  |> translate(x = (plateOffsetX + 5mm) * 2, global = true)
+
+servoHornSeed = clone(unitBox)
+  |> scale(
+       x = 28mm / 1mm,
+       y = 4mm / 1mm,
+       z = 4mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = 14mm,
+       y = elbowY,
+       z = elbowZ,
+       global = true,
+     )
+elbowServoHorn = patternCircular3d(
+  servoHornSeed,
+  instances = 4,
+  axis = X,
+  center = [0mm, elbowY, elbowZ],
+  arcDegrees = 360deg,
+  rotateDuplicates = true,
+)
+shoulderScrewSeed = clone(unitCylinder)
+  |> scale(
+       x = 4.2mm / 1mm,
+       y = 4.2mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Y, angle = 90deg, global = true)
+  |> translate(
+       x = -36mm,
+       y = -17mm,
+       z = 12mm,
+       global = true,
+     )
+shoulderScrews = patternLinear3d(
+  shoulderScrewSeed,
+  instances = 4,
+  distance = 24mm,
+  axis = X,
+)
+
+orangePlateGroup = appearance(
+  flatten([
+    leftLowerLink,
+    rightLowerLink,
+    leftUpperLink,
+    rightUpperLink,
+    shoulderDiscLeft,
+    shoulderDiscRight,
+    elbowDiscLeft,
+    elbowDiscRight,
+    wristDiscLeft,
+    wristDiscRight
+  ]),
+  color = orangeGold,
+  roughness = 45,
+  metalness = 50,
+)
+servoGroup = appearance(
+  flatten([shoulderServo, elbowServo, wristServo]),
+  color = dark,
+  roughness = 62,
+  metalness = 10,
+)
+slotGroup = appearance(
+  flatten([
+    leftLowerSlotA,
+    leftLowerSlotB,
+    rightLowerSlotA,
+    rightLowerSlotB,
+    leftUpperSlotA,
+    leftUpperSlotB,
+    rightUpperSlotA,
+    rightUpperSlotB
+  ]),
+  color = black,
+  roughness = 70,
+  metalness = 0,
+)
+axleGroup = appearance(
+  flatten([
+    shoulderAxle,
+    elbowAxle,
+    wristAxle,
+    elbowServoHorn,
+    shoulderScrews
+  ]),
+  color = steel,
+  roughness = 34,
+  metalness = 76,
+)
+
+export allBodies = flatten([
+  orangePlateGroup,
+  servoGroup,
+  slotGroup,
+  axleGroup
+])

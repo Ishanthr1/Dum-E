@@ -1,0 +1,85 @@
+// Robot primitive library
+// Solver-sketch unit solids shared by the robot assembly.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+unitBoxSketch = sketch(on = XY) {
+  boxLowerEdge = line(start = [var -0.5mm, var -0.5mm], end = [var 0.5mm, var -0.5mm])
+  boxRightEdge = line(start = [var 0.5mm, var -0.5mm], end = [var 0.5mm, var 0.5mm])
+  boxUpperEdge = line(start = [var 0.5mm, var 0.5mm], end = [var -0.5mm, var 0.5mm])
+  boxLeftEdge = line(start = [var -0.5mm, var 0.5mm], end = [var -0.5mm, var -0.5mm])
+
+  coincident([boxLowerEdge.end, boxRightEdge.start])
+  coincident([boxRightEdge.end, boxUpperEdge.start])
+  coincident([boxUpperEdge.end, boxLeftEdge.start])
+  coincident([boxLeftEdge.end, boxLowerEdge.start])
+  coincident([boxLowerEdge.start, [-0.5mm, -0.5mm]])
+
+  horizontal(boxLowerEdge)
+  vertical(boxRightEdge)
+  horizontal(boxUpperEdge)
+  vertical(boxLeftEdge)
+
+  horizontalDistance([boxLowerEdge.start, boxLowerEdge.end]) == 1mm
+  verticalDistance([boxLowerEdge.start, boxLeftEdge.start]) == 1mm
+}
+
+unitBoxRegion = region(point = [0mm, 0mm], sketch = unitBoxSketch)
+unitBoxBody = extrude(unitBoxRegion, length = 1mm, symmetric = true)
+hide(unitBoxSketch)
+export unitBox = unitBoxBody
+
+unitCylinderSketch = sketch(on = XY) {
+  cylinderCenter = point(at = [var 0mm, var 0mm])
+  cylinderGuide = line(start = [var 0mm, var 0mm], end = [var 0.5mm, var 0mm], construction = true)
+  cylinderEdge = circle(start = [var 0.5mm, var 0mm], center = [var 0mm, var 0mm])
+
+  coincident([cylinderCenter, ORIGIN])
+  coincident([cylinderGuide.start, cylinderCenter])
+  coincident([cylinderGuide.end, cylinderEdge.start])
+  coincident([cylinderEdge.center, cylinderCenter])
+  horizontal(cylinderGuide)
+  diameter(cylinderEdge) == 1mm
+}
+
+unitCylinderRegion = region(point = [0mm, 0mm], sketch = unitCylinderSketch)
+unitCylinderBody = extrude(unitCylinderRegion, length = 1mm, symmetric = true)
+hide(unitCylinderSketch)
+export unitCylinder = unitCylinderBody
+
+unitTriangleSketch = sketch(on = XY) {
+  triangleBaseEdge = line(start = [var -0.5mm, var -0.5mm], end = [var 0.5mm, var -0.5mm])
+  triangleSlopeEdge = line(start = [var 0.5mm, var -0.5mm], end = [var -0.5mm, var 0.5mm])
+  triangleBackEdge = line(start = [var -0.5mm, var 0.5mm], end = [var -0.5mm, var -0.5mm])
+
+  coincident([
+    triangleBaseEdge.end,
+    triangleSlopeEdge.start
+  ])
+  coincident([
+    triangleSlopeEdge.end,
+    triangleBackEdge.start
+  ])
+  coincident([
+    triangleBackEdge.end,
+    triangleBaseEdge.start
+  ])
+  coincident([
+    triangleBaseEdge.start,
+    [-0.5mm, -0.5mm]
+  ])
+  horizontal(triangleBaseEdge)
+  vertical(triangleBackEdge)
+  horizontalDistance([
+  triangleBaseEdge.start,
+  triangleBaseEdge.end
+]) == 1mm
+  verticalDistance([
+  triangleBaseEdge.start,
+  triangleBackEdge.start
+]) == 1mm
+}
+
+unitTriangleRegion = region(point = [-0.2mm, -0.1mm], sketch = unitTriangleSketch)
+unitTriangleBody = extrude(unitTriangleRegion, length = 1mm, symmetric = true)
+hide(unitTriangleSketch)
+export unitTriangle = unitTriangleBody

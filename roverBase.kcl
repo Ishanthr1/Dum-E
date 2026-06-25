@@ -1,0 +1,470 @@
+// Rover base assembly
+// Layered chassis, deck plates, sensors, and visible electronics.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import unitBox, unitCylinder, unitTriangle from "robotPrimitives.kcl"
+
+baseLength = 238mm
+baseWidth = 178mm
+baseHeight = 42mm
+baseCenterZ = 44mm
+frontY = -baseLength / 2
+rearY = baseLength / 2
+sideX = baseWidth / 2
+silver = "#b9b5aa"
+dark = "#16191c"
+black = "#050608"
+orange = "#f5822a"
+gold = "#d4a04a"
+green = "#1d8c53"
+blueGlass = "#6fd1ff"
+
+baseTub = clone(unitBox)
+  |> scale(
+       x = baseWidth / 1mm,
+       y = baseLength / 1mm,
+       z = baseHeight / 1mm,
+       global = true,
+     )
+  |> translate(z = baseCenterZ, global = true)
+frontBumper = clone(unitBox)
+  |> scale(
+       x = 202mm / 1mm,
+       y = 28mm / 1mm,
+       z = 40mm / 1mm,
+       global = true,
+     )
+  |> translate(y = frontY - 5mm, z = 42mm, global = true)
+frontBumperLip = clone(unitBox)
+  |> scale(
+       x = 214mm / 1mm,
+       y = 12mm / 1mm,
+       z = 18mm / 1mm,
+       global = true,
+     )
+  |> translate(y = frontY - 26mm, z = 51mm, global = true)
+leftSideRail = clone(unitBox)
+  |> scale(
+       x = 12mm / 1mm,
+       y = 206mm / 1mm,
+       z = 30mm / 1mm,
+       global = true,
+     )
+  |> translate(x = -sideX - 2mm, z = 37mm, global = true)
+rightSideRail = clone(leftSideRail)
+  |> translate(x = (sideX + 2mm) * 2, global = true)
+rearRail = clone(unitBox)
+  |> scale(
+       x = 188mm / 1mm,
+       y = 16mm / 1mm,
+       z = 30mm / 1mm,
+       global = true,
+     )
+  |> translate(y = rearY + 2mm, z = 38mm, global = true)
+
+mainDeckBlank = clone(unitBox)
+  |> scale(
+       x = 166mm / 1mm,
+       y = 144mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 8mm, z = 72mm, global = true)
+deckHoleSeedFront = clone(unitCylinder)
+  |> scale(
+       x = 6mm / 1mm,
+       y = 6mm / 1mm,
+       z = 12mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -57mm,
+       y = -34mm,
+       z = 72mm,
+       global = true,
+     )
+deckHoleRowFront = patternLinear3d(
+  deckHoleSeedFront,
+  instances = 4,
+  distance = 38mm,
+  axis = X,
+)
+deckHoleSeedRear = clone(unitCylinder)
+  |> scale(
+       x = 5mm / 1mm,
+       y = 5mm / 1mm,
+       z = 12mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -57mm,
+       y = 48mm,
+       z = 72mm,
+       global = true,
+     )
+deckHoleRowRear = patternLinear3d(
+  deckHoleSeedRear,
+  instances = 4,
+  distance = 38mm,
+  axis = X,
+)
+leftDeckSlotCut = clone(unitBox)
+  |> scale(
+       x = 42mm / 1mm,
+       y = 8mm / 1mm,
+       z = 12mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -44mm,
+       y = 6mm,
+       z = 72mm,
+       global = true,
+     )
+rightDeckSlotCut = clone(leftDeckSlotCut)
+  |> translate(x = 88mm, global = true)
+centerCableSlotCut = clone(unitBox)
+  |> scale(
+       x = 18mm / 1mm,
+       y = 46mm / 1mm,
+       z = 12mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = 0mm,
+       y = 29mm,
+       z = 72mm,
+       global = true,
+     )
+mainDeck = subtract(
+  [mainDeckBlank],
+  tools = flatten([
+    deckHoleRowFront,
+    deckHoleRowRear,
+    leftDeckSlotCut,
+    rightDeckSlotCut,
+    centerCableSlotCut
+  ]),
+)
+
+rightGuardBlank = clone(unitBox)
+  |> scale(
+       x = 4mm / 1mm,
+       y = 110mm / 1mm,
+       z = 44mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = sideX + 4mm,
+       y = 34mm,
+       z = 58mm,
+       global = true,
+     )
+rightGuardSlotA = clone(unitBox)
+  |> scale(
+       x = 9mm / 1mm,
+       y = 24mm / 1mm,
+       z = 10mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = sideX + 4mm,
+       y = 0mm,
+       z = 58mm,
+       global = true,
+     )
+rightGuardSlotB = clone(rightGuardSlotA)
+  |> translate(y = 36mm, z = 5mm, global = true)
+rightGuardSlotC = clone(unitBox)
+  |> scale(
+       x = 9mm / 1mm,
+       y = 18mm / 1mm,
+       z = 14mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = sideX + 4mm,
+       y = 72mm,
+       z = 56mm,
+       global = true,
+     )
+rightGuard = subtract(
+  [rightGuardBlank],
+  tools = [
+    rightGuardSlotA,
+    rightGuardSlotB,
+    rightGuardSlotC
+  ],
+)
+leftGuardBlank = clone(unitBox)
+  |> scale(
+       x = 4mm / 1mm,
+       y = 110mm / 1mm,
+       z = 44mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -sideX - 4mm,
+       y = 34mm,
+       z = 58mm,
+       global = true,
+     )
+leftGuardSlotA = clone(unitBox)
+  |> scale(
+       x = 9mm / 1mm,
+       y = 24mm / 1mm,
+       z = 10mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -sideX - 4mm,
+       y = 0mm,
+       z = 58mm,
+       global = true,
+     )
+leftGuardSlotB = clone(leftGuardSlotA)
+  |> translate(y = 36mm, z = 5mm, global = true)
+leftGuardSlotC = clone(unitBox)
+  |> scale(
+       x = 9mm / 1mm,
+       y = 18mm / 1mm,
+       z = 14mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -sideX - 4mm,
+       y = 72mm,
+       z = 56mm,
+       global = true,
+     )
+leftGuard = subtract(
+  [leftGuardBlank],
+  tools = [
+    leftGuardSlotA,
+    leftGuardSlotB,
+    leftGuardSlotC
+  ],
+)
+
+frontSensorPanel = clone(unitBox)
+  |> scale(
+       x = 100mm / 1mm,
+       y = 5mm / 1mm,
+       z = 38mm / 1mm,
+       global = true,
+     )
+  |> translate(y = frontY - 20mm, z = 58mm, global = true)
+leftSensorRim = clone(unitCylinder)
+  |> scale(
+       x = 23mm / 1mm,
+       y = 23mm / 1mm,
+       z = 7mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -24mm,
+       y = frontY - 25mm,
+       z = 57mm,
+       global = true,
+     )
+rightSensorRim = clone(leftSensorRim)
+  |> translate(x = 48mm, global = true)
+leftSensorGlass = clone(unitCylinder)
+  |> scale(
+       x = 15mm / 1mm,
+       y = 15mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -24mm,
+       y = frontY - 29mm,
+       z = 57mm,
+       global = true,
+     )
+rightSensorGlass = clone(leftSensorGlass)
+  |> translate(x = 48mm, global = true)
+statusLedBar = clone(unitBox)
+  |> scale(
+       x = 22mm / 1mm,
+       y = 2mm / 1mm,
+       z = 4mm / 1mm,
+       global = true,
+     )
+  |> translate(y = frontY - 31mm, z = 75mm, global = true)
+
+blackElectronicsBox = clone(unitBox)
+  |> scale(
+       x = 92mm / 1mm,
+       y = 56mm / 1mm,
+       z = 35mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -14mm, z = 94mm, global = true)
+servoTurntableBase = clone(unitCylinder)
+  |> scale(
+       x = 54mm / 1mm,
+       y = 54mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -8mm, z = 116mm, global = true)
+servoTurntableTop = clone(unitCylinder)
+  |> scale(
+       x = 39mm / 1mm,
+       y = 39mm / 1mm,
+       z = 10mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -8mm, z = 125mm, global = true)
+rearPcb = clone(unitBox)
+  |> scale(
+       x = 108mm / 1mm,
+       y = 60mm / 1mm,
+       z = 2mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 66mm, z = 77mm, global = true)
+processorChip = clone(unitBox)
+  |> scale(
+       x = 18mm / 1mm,
+       y = 20mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -18mm,
+       y = 66mm,
+       z = 80mm,
+       global = true,
+     )
+headerBlock = clone(unitBox)
+  |> scale(
+       x = 72mm / 1mm,
+       y = 5mm / 1mm,
+       z = 7mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = 0mm,
+       y = 91mm,
+       z = 83mm,
+       global = true,
+     )
+wireBundleOne = clone(unitBox)
+  |> scale(
+       x = 3mm / 1mm,
+       y = 54mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = -12deg, global = true)
+  |> translate(
+       x = -42mm,
+       y = 44mm,
+       z = 91mm,
+       global = true,
+     )
+wireBundleTwo = clone(unitBox)
+  |> scale(
+       x = 3mm / 1mm,
+       y = 48mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = 18deg, global = true)
+  |> translate(
+       x = 43mm,
+       y = 48mm,
+       z = 91mm,
+       global = true,
+     )
+
+frontScrewSeed = clone(unitCylinder)
+  |> scale(
+       x = 5mm / 1mm,
+       y = 5mm / 1mm,
+       z = 2mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -78mm,
+       y = frontY - 28mm,
+       z = 78mm,
+       global = true,
+     )
+frontScrews = patternLinear3d(
+  frontScrewSeed,
+  instances = 4,
+  distance = 52mm,
+  axis = X,
+)
+
+silverGroup = appearance(
+  flatten([
+    frontBumper,
+    frontBumperLip,
+    mainDeck,
+    rightGuard,
+    leftGuard,
+    leftSensorRim,
+    rightSensorRim,
+    frontScrews
+  ]),
+  color = silver,
+  roughness = 40,
+  metalness = 62,
+)
+darkGroup = appearance(
+  flatten([
+    baseTub,
+    leftSideRail,
+    rightSideRail,
+    rearRail,
+    frontSensorPanel,
+    blackElectronicsBox
+  ]),
+  color = dark,
+  roughness = 66,
+  metalness = 12,
+)
+sensorGlassGroup = appearance(
+  flatten([
+    leftSensorGlass,
+    rightSensorGlass,
+    statusLedBar
+  ]),
+  color = blueGlass,
+  roughness = 18,
+  metalness = 0,
+  opacity = 68,
+)
+turntableGroup = appearance(
+  flatten([servoTurntableBase, servoTurntableTop]),
+  color = gold,
+  roughness = 42,
+  metalness = 62,
+)
+electronicsGroup = appearance(
+  flatten([rearPcb, processorChip, headerBlock]),
+  color = green,
+  roughness = 68,
+  metalness = 0,
+)
+wireGroup = appearance(
+  flatten([wireBundleOne, wireBundleTwo]),
+  color = orange,
+  roughness = 74,
+  metalness = 0,
+)
+
+export allBodies = flatten([
+  silverGroup,
+  darkGroup,
+  sensorGlassGroup,
+  turntableGroup,
+  electronicsGroup,
+  wireGroup
+])

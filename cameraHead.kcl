@@ -1,0 +1,213 @@
+// Camera head assembly
+// Tilt camera plate, lens barrel, screws, and cable strain relief.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import unitBox, unitCylinder from "robotPrimitives.kcl"
+
+black = "#050608"
+dark = "#12161a"
+steel = "#d4d5d2"
+redGlass = "#5d2223"
+gold = "#9a5b26"
+
+cameraBackPlate = clone(unitBox)
+  |> scale(
+       x = 72mm / 1mm,
+       y = 6mm / 1mm,
+       z = 52mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 0mm, z = 0mm, global = true)
+cameraFacePlate = clone(unitBox)
+  |> scale(
+       x = 64mm / 1mm,
+       y = 5mm / 1mm,
+       z = 46mm / 1mm,
+       global = true,
+     )
+  |> translate(y = -6mm, z = 0mm, global = true)
+leftTopEar = clone(unitCylinder)
+  |> scale(
+       x = 15mm / 1mm,
+       y = 15mm / 1mm,
+       z = 10mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -27mm,
+       y = 0mm,
+       z = 30mm,
+       global = true,
+     )
+rightTopEar = clone(leftTopEar)
+  |> translate(x = 54mm, global = true)
+
+lensOuterBarrel = clone(unitCylinder)
+  |> scale(
+       x = 31mm / 1mm,
+       y = 31mm / 1mm,
+       z = 28mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -10mm,
+       y = -24mm,
+       z = 0mm,
+       global = true,
+     )
+lensInnerBarrel = clone(unitCylinder)
+  |> scale(
+       x = 24mm / 1mm,
+       y = 24mm / 1mm,
+       z = 16mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -10mm,
+       y = -42mm,
+       z = 0mm,
+       global = true,
+     )
+lensGlass = clone(unitCylinder)
+  |> scale(
+       x = 19mm / 1mm,
+       y = 19mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -10mm,
+       y = -52mm,
+       z = 0mm,
+       global = true,
+     )
+lensRibSeed = clone(unitBox)
+  |> scale(
+       x = 4mm / 1mm,
+       y = 4mm / 1mm,
+       z = 18mm / 1mm,
+       global = true,
+     )
+  |> translate(
+       x = -10mm,
+       y = -30mm,
+       z = 16mm,
+       global = true,
+     )
+lensRibs = patternCircular3d(
+  lensRibSeed,
+  instances = 16,
+  axis = Y,
+  center = [-10mm, -30mm, 0mm],
+  arcDegrees = 360deg,
+  rotateDuplicates = true,
+)
+
+cornerScrewSeed = clone(unitCylinder)
+  |> scale(
+       x = 4.5mm / 1mm,
+       y = 4.5mm / 1mm,
+       z = 3mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -30mm,
+       y = -10mm,
+       z = -20mm,
+       global = true,
+     )
+cornerScrewTopLeft = clone(cornerScrewSeed)
+  |> translate(z = 40mm, global = true)
+cornerScrewBottomRight = clone(cornerScrewSeed)
+  |> translate(x = 60mm, global = true)
+cornerScrewTopRight = clone(cornerScrewBottomRight)
+  |> translate(z = 40mm, global = true)
+
+underTiltBracket = clone(unitBox)
+  |> scale(
+       x = 62mm / 1mm,
+       y = 8mm / 1mm,
+       z = 9mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 10mm, z = -30mm, global = true)
+rearHandle = clone(unitBox)
+  |> scale(
+       x = 42mm / 1mm,
+       y = 8mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 12mm, z = 31mm, global = true)
+flatCable = clone(unitBox)
+  |> scale(
+       x = 8mm / 1mm,
+       y = 54mm / 1mm,
+       z = 2mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = 11deg, global = true)
+  |> translate(
+       x = 28mm,
+       y = 28mm,
+       z = -12mm,
+       global = true,
+     )
+
+blackGroup = appearance(
+  flatten([
+    cameraBackPlate,
+    cameraFacePlate,
+    lensOuterBarrel,
+    lensInnerBarrel,
+    lensRibs
+  ]),
+  color = black,
+  roughness = 50,
+  metalness = 8,
+)
+metalGroup = appearance(
+  flatten([
+    leftTopEar,
+    rightTopEar,
+    cornerScrewSeed,
+    cornerScrewTopLeft,
+    cornerScrewBottomRight,
+    cornerScrewTopRight
+  ]),
+  color = steel,
+  roughness = 30,
+  metalness = 76,
+)
+glassGroup = appearance(
+  lensGlass,
+  color = redGlass,
+  roughness = 12,
+  metalness = 0,
+  opacity = 70,
+)
+bracketGroup = appearance(
+  flatten([underTiltBracket, rearHandle]),
+  color = gold,
+  roughness = 48,
+  metalness = 54,
+)
+cableGroup = appearance(
+  flatCable,
+  color = dark,
+  roughness = 72,
+  metalness = 0,
+)
+
+export allBodies = flatten([
+  blackGroup,
+  metalGroup,
+  glassGroup,
+  bracketGroup,
+  cableGroup
+])

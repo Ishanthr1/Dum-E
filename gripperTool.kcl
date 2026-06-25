@@ -1,0 +1,199 @@
+// Parallel gripper tool
+// Two-finger servo gripper with orange soft pads and cable loop.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import unitBox, unitCylinder from "robotPrimitives.kcl"
+
+orange = "#f5822a"
+dark = "#12161a"
+steel = "#c4c6c3"
+black = "#050608"
+
+wristMountPlate = clone(unitBox)
+  |> scale(
+       x = 58mm / 1mm,
+       y = 7mm / 1mm,
+       z = 22mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 0mm, z = 0mm, global = true)
+leftPalmPivot = clone(unitCylinder)
+  |> scale(
+       x = 12mm / 1mm,
+       y = 12mm / 1mm,
+       z = 7mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(
+       x = -19mm,
+       y = -6mm,
+       z = 0mm,
+       global = true,
+     )
+rightPalmPivot = clone(leftPalmPivot)
+  |> translate(x = 38mm, global = true)
+
+leftFingerLink = clone(unitBox)
+  |> scale(
+       x = 5mm / 1mm,
+       y = 62mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = 11deg, global = true)
+  |> translate(
+       x = -25mm,
+       y = -40mm,
+       z = -8mm,
+       global = true,
+     )
+rightFingerLink = clone(unitBox)
+  |> scale(
+       x = 5mm / 1mm,
+       y = 62mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = -11deg, global = true)
+  |> translate(
+       x = 25mm,
+       y = -40mm,
+       z = -8mm,
+       global = true,
+     )
+leftSupportRod = clone(unitCylinder)
+  |> scale(
+       x = 4mm / 1mm,
+       y = 4mm / 1mm,
+       z = 58mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> rotate(axis = Z, angle = 11deg, global = true)
+  |> translate(
+       x = -16mm,
+       y = -38mm,
+       z = -18mm,
+       global = true,
+     )
+rightSupportRod = clone(unitCylinder)
+  |> scale(
+       x = 4mm / 1mm,
+       y = 4mm / 1mm,
+       z = 58mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> rotate(axis = Z, angle = -11deg, global = true)
+  |> translate(
+       x = 16mm,
+       y = -38mm,
+       z = -18mm,
+       global = true,
+     )
+leftSoftPad = clone(unitBox)
+  |> scale(
+       x = 13mm / 1mm,
+       y = 40mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = 11deg, global = true)
+  |> translate(
+       x = -35mm,
+       y = -77mm,
+       z = -8mm,
+       global = true,
+     )
+rightSoftPad = clone(unitBox)
+  |> scale(
+       x = 13mm / 1mm,
+       y = 40mm / 1mm,
+       z = 8mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = Z, angle = -11deg, global = true)
+  |> translate(
+       x = 35mm,
+       y = -77mm,
+       z = -8mm,
+       global = true,
+     )
+
+servoCase = clone(unitBox)
+  |> scale(
+       x = 42mm / 1mm,
+       y = 25mm / 1mm,
+       z = 27mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 14mm, z = -12mm, global = true)
+servoHorn = clone(unitCylinder)
+  |> scale(
+       x = 16mm / 1mm,
+       y = 16mm / 1mm,
+       z = 5mm / 1mm,
+       global = true,
+     )
+  |> rotate(axis = X, angle = 90deg, global = true)
+  |> translate(y = -2mm, z = -12mm, global = true)
+cableLoopSeed = clone(unitBox)
+  |> scale(
+       x = 2mm / 1mm,
+       y = 8mm / 1mm,
+       z = 2mm / 1mm,
+       global = true,
+     )
+  |> translate(y = 22mm, z = 10mm, global = true)
+cableLoop = patternCircular3d(
+  cableLoopSeed,
+  instances = 9,
+  axis = X,
+  center = [0mm, 22mm, 10mm],
+  arcDegrees = 260deg,
+  rotateDuplicates = true,
+)
+
+metalGroup = appearance(
+  flatten([
+    wristMountPlate,
+    leftPalmPivot,
+    rightPalmPivot,
+    leftSupportRod,
+    rightSupportRod,
+    servoHorn
+  ]),
+  color = steel,
+  roughness = 36,
+  metalness = 72,
+)
+darkGroup = appearance(
+  flatten([
+    leftFingerLink,
+    rightFingerLink,
+    servoCase
+  ]),
+  color = dark,
+  roughness = 68,
+  metalness = 8,
+)
+padGroup = appearance(
+  flatten([leftSoftPad, rightSoftPad]),
+  color = orange,
+  roughness = 78,
+  metalness = 0,
+)
+cableGroup = appearance(
+  cableLoop,
+  color = black,
+  roughness = 76,
+  metalness = 0,
+)
+
+export allBodies = flatten([
+  metalGroup,
+  darkGroup,
+  padGroup,
+  cableGroup
+])

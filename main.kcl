@@ -1,0 +1,76 @@
+// Reference robot assembly
+// Rover with mecanum wheels, electronics deck, articulated arm, camera, and gripper.
+@settings(defaultLengthUnit = mm, kclVersion = 2.0)
+
+import allBodies as roverBase from "roverBase.kcl"
+import allBodies as frontLeftWheelSource from "mecanumWheelFrontLeft.kcl"
+import allBodies as frontRightWheelSource from "mecanumWheelFrontRight.kcl"
+import allBodies as rearLeftWheelSource from "mecanumWheelRearLeft.kcl"
+import allBodies as rearRightWheelSource from "mecanumWheelRearRight.kcl"
+import allBodies as robotArm from "robotArm.kcl"
+import allBodies as cameraHead from "cameraHead.kcl"
+import allBodies as gripperTool from "gripperTool.kcl"
+
+wheelX = 112mm
+frontWheelY = -87mm
+rearWheelY = 87mm
+wheelZ = 34mm
+armBaseY = -8mm
+armBaseZ = 124mm
+wristY = armBaseY - 20mm
+wristZ = armBaseZ + 154mm
+
+frontLeftWheel = frontLeftWheelSource
+  |> translate(
+       x = -wheelX,
+       y = frontWheelY,
+       z = wheelZ,
+       global = true,
+     )
+frontRightWheel = frontRightWheelSource
+  |> rotate(axis = Z, angle = 180deg, global = true)
+  |> translate(
+       x = wheelX,
+       y = frontWheelY,
+       z = wheelZ,
+       global = true,
+     )
+rearLeftWheel = rearLeftWheelSource
+  |> rotate(axis = X, angle = 180deg, global = true)
+  |> translate(
+       x = -wheelX,
+       y = rearWheelY,
+       z = wheelZ,
+       global = true,
+     )
+rearRightWheel = rearRightWheelSource
+  |> rotate(axis = Z, angle = 180deg, global = true)
+  |> rotate(axis = X, angle = 180deg, global = true)
+  |> translate(
+       x = wheelX,
+       y = rearWheelY,
+       z = wheelZ,
+       global = true,
+     )
+
+armAssembly = robotArm
+  |> translate(y = armBaseY, z = armBaseZ, global = true)
+cameraAssembly = cameraHead
+  |> rotate(axis = X, angle = -8deg, global = true)
+  |> translate(y = wristY - 12mm, z = wristZ + 6mm, global = true)
+gripperAssembly = gripperTool
+  |> rotate(axis = X, angle = -10deg, global = true)
+  |> translate(y = wristY - 48mm, z = wristZ - 32mm, global = true)
+
+referenceRobotAssembly = flatten([
+  roverBase,
+  frontLeftWheel,
+  frontRightWheel,
+  rearLeftWheel,
+  rearRightWheel,
+  armAssembly,
+  cameraAssembly,
+  gripperAssembly
+])
+
+referenceRobotAssembly
