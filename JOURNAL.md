@@ -1,7 +1,7 @@
 # Dum-E Build Journal
 
-Dum-E is a ~$400 voice-controlled autonomous mobile manipulator: a 6-DOF arm on a
-holonomic (mecanum) drive base, with stereo vision, natural-language control, and a
+DumE is a voice controlled autonomous mobile manipulator: a 6 DOF arm on a
+holonomic (mecanum) drive base, with stereo vision, natural language control, and a
 personality system. The chassis and arm are designed and built **from scratch** from
 individually sourced components.
 
@@ -10,7 +10,7 @@ individually sourced components.
 ## June 19 — Design Phase: Drive Base Layout
 **Hours: 2**
 
-- Started the CAD design for Dum-E and laid out the holonomic drive base footprint (~30 × 25 cm).
+- Started the CAD design for DumE and laid out the holonomic drive base footprint (~30 × 25 cm).
 - Positioned the four mecanum wheels at the corners and set the roller angle to 45° for true omnidirectional travel; checked wheel clearance against the chassis edges.
 - Blocked out the lower deck and planned where the four DC gear motors and the motor driver would sit.
 - Locked in the overall proportions so the base is wide and low enough to stay stable once the arm is mounted on top.
@@ -38,10 +38,10 @@ individually sourced components.
 ## June 21 — Design Phase: 6-DOF Arm & Gripper
 **Hours: 4**
 
-- Designed the full 6-DOF arm from scratch: shoulder, elbow, and wrist joints, each driven by a high-torque servo in its own aluminum bracket.
+- Designed the full 6 DOF arm from scratch: shoulder, elbow, and wrist joints, each driven by a high torque servo in its own aluminum bracket.
 - Sized the link segments (slim aluminum plates with lightening cutouts and cable channels) to keep the arm short and stout rather than gangly, so the servos aren't fighting a long moment arm.
-- Designed the parallel-jaw gripper as a single 3D-printed assembly actuated by a small servo, with textured fingertips for grip.
-- Sanity-checked reach and joint ranges so the gripper can actually reach the ground and objects on the deck — this feeds directly into the inverse-kinematics work later.
+- Designed the parallel jaw gripper as a single 3D printed assembly actuated by a small servo, with textured fingertips for grip.
+- Sanity checked reach and joint ranges so the gripper can actually reach the ground and objects on the deck this feeds directly into the inverse kinematics work later.
 
 <img width="450" height="645" alt="Screenshot 2026-06-24 at 9 26 03 PM" src="https://github.com/user-attachments/assets/1aa77b50-377c-46b1-8c12-42b37f1bfa0a" />
 <img width="353" height="418" alt="Screenshot 2026-06-24 at 9 26 24 PM" src="https://github.com/user-attachments/assets/a5d24510-c82c-4fa7-9304-c766e2ab5cee" />
@@ -54,8 +54,8 @@ individually sourced components.
 ## June 22 — Design Phase: Vision Head, Power Routing & Scratch-Build Rework
 **Hours: 4**
 
-- Switched from off-the-shelf kit parts to a fully scratch-built chassis and arm, and redid the CAD for cleaner, more precise geometry — real brackets, fillets, and fastener holes instead of blocky placeholders.
-- Designed the 3D-printed pan-tilt sensor head carrying the stereo camera pair (fixed baseline) with the ReSpeaker mic array disc mounted on top.
+- Switched from off the shelf kit parts to a fully scratch built chassis and arm, and redid the CAD for cleaner, more precise geometry real brackets, fillets, and fastener holes instead of blocky placeholders.
+- Designed the 3D printed pan tilt sensor head carrying the stereo camera pair (fixed baseline) with the ReSpeaker mic array disc mounted on top.
 - Planned the power and wiring path: LiPo → buck converter → Pi 5 and logic, with a separate motor power rail and routing channels so no wires are left floating.
 - Fixed assembly issues from the earlier draft so every part is connected and seated, with nothing detached.
 
