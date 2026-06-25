@@ -1,0 +1,26 @@
+Category,Item,Qty,Unit_Price_USD,Line_Total_USD,Price_Status,Vendor,Link
+Arm,"DS3218 20kg digital servo (sold as 2-pack) - arm joints",3,27.99,83.97,Confirmed,ANNIMOS (Amazon),https://www.amazon.com/DS3218-Digital-Servo-Torque-Waterproof/dp/B07TKTQ2NZ
+Arm,"PCA9685 16-channel servo driver",1,14.95,14.95,Confirmed,Adafruit,https://www.adafruit.com/product/815
+Arm,"Micro servo (SG92R) - gripper actuator",1,5.95,5.95,Estimate,Adafruit,https://www.adafruit.com/product/169
+Arm,"6061 aluminum sheet 3mm (~12x12in) - arm links/brackets",1,20.00,20.00,Estimate,OnlineMetals,https://www.onlinemetals.com/en/buy/aluminum
+Base,"Mecanum wheel kit 80mm (4 wheels, 2L+2R)",1,19.60,19.60,Confirmed,DFRobot,https://www.dfrobot.com/product-2042.html
+Base,"DC gear motor w/ encoder 12V (JGB37-520 type)",4,13.00,52.00,Estimate,AliExpress/Amazon,https://www.amazon.com/s?k=JGB37-520+12V+encoder+gear+motor
+Base,"6mm hex coupling (wheel-to-motor shaft)",4,4.00,16.00,Estimate,Amazon,https://www.amazon.com/s?k=6mm+hex+coupling+mecanum
+Base,"L298N dual H-bridge motor driver (2 = 4 motors)",2,7.00,14.00,Estimate,Amazon,https://www.amazon.com/s?k=L298N+motor+driver
+Base,"6061 aluminum sheet 3mm (~12x12in) - chassis plates",1,22.00,22.00,Estimate,OnlineMetals,https://www.onlinemetals.com/en/buy/aluminum
+Power,"LiPo battery 3S 11.1V (~2200-5200mAh, XT60)",1,22.00,22.00,Estimate,HobbyKing/Amazon,https://www.amazon.com/s?k=3S+11.1V+lipo+battery+xt60
+Power,"LiPo balance charger (3S)",1,18.00,18.00,Estimate,Amazon,https://www.amazon.com/s?k=lipo+3s+balance+charger
+Power,"Buck converter / 5V 5A regulator (for Pi 5)",1,10.00,10.00,Estimate,Pololu/Amazon,https://www.amazon.com/s?k=5V+5A+buck+converter
+Power,"XT60 connectors + power wiring",1,8.00,8.00,Estimate,Amazon,https://www.amazon.com/s?k=xt60+connector+wire
+Vision/Audio,"Raspberry Pi Camera Module 3 Standard (stereo pair)",2,25.00,50.00,Confirmed,Adafruit/RPi,https://www.adafruit.com/product/5657
+Vision/Audio,"ReSpeaker 4-Mic Array for Raspberry Pi",1,24.90,24.90,Estimate,Seeed Studio,https://www.seeedstudio.com/ReSpeaker-4-Mic-Array-for-Raspberry-Pi.html
+Vision/Audio,"Speaker 3in 8 ohm 1W",1,1.95,1.95,Confirmed,Adafruit,https://www.adafruit.com/product/1313
+Vision/Audio,"MAX98357A I2S audio amplifier",1,5.95,5.95,Confirmed,Adafruit,https://www.adafruit.com/product/3006
+Hardware,"M3 socket-head screw + nut assortment",1,13.00,13.00,Estimate,Amazon,https://www.amazon.com/s?k=M3+socket+head+screw+nut+assortment
+Hardware,"Ball bearing assortment (608 / flanged)",1,10.00,10.00,Estimate,Amazon,https://www.amazon.com/s?k=608+ball+bearing+assortment
+Hardware,"Shaft collars / couplers assortment",1,8.00,8.00,Estimate,Amazon,https://www.amazon.com/s?k=shaft+collar+coupler+assortment
+Hardware,"M3 brass standoff kit",1,9.00,9.00,Estimate,Amazon,https://www.amazon.com/s?k=M3+brass+standoff+kit
+Hardware,"3D printer filament (PETG 1kg) - gripper/mounts/housings",1,20.00,20.00,Estimate,Amazon,https://www.amazon.com/s?k=PETG+filament+1kg
+Hardware,"Dupont jumper wire kit",1,10.00,10.00,Estimate,Amazon,https://www.amazon.com/s?k=dupont+jumper+wire+kit
+,,,,,,,
+TOTAL,"Parts only (shipping and tax paid separately)",,,459.27,,,
