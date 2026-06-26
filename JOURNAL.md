@@ -7,7 +7,7 @@ individually sourced components.
 
 ---
 
-## June 19 — Design Phase: Drive Base Layout
+## June 19: Design Phase: Drive Base Layout
 **Hours: 2**
 
 - Started the CAD design for DumE and laid out the holonomic drive base footprint (~30 × 25 cm).
@@ -20,7 +20,7 @@ individually sourced components.
 
 ---
 
-## June 20 — Design Phase: Arm Mount, Camera Housing & Electronics Bay
+## June 20: Design Phase: Arm Mount, Camera Housing & Electronics Bay
 **Hours: 3**
 
 - Added the rotating shoulder turret / arm mount at the rear center of the deck.
@@ -35,7 +35,7 @@ individually sourced components.
 
 ---
 
-## June 21 — Design Phase: 6-DOF Arm & Gripper
+## June 21: Design Phase: 6-DOF Arm & Gripper
 **Hours: 4**
 
 - Designed the full 6 DOF arm from scratch: shoulder, elbow, and wrist joints, each driven by a high torque servo in its own aluminum bracket.
@@ -51,7 +51,7 @@ individually sourced components.
 
 ---
 
-## June 22 — Design Phase: Vision Head, Power Routing & Scratch-Build Rework
+## June 22: Design Phase: Vision Head, Power Routing & Scratch-Build Rework
 **Hours: 4**
 
 - Switched from off the shelf kit parts to a fully scratch built chassis and arm, and redid the CAD for cleaner, more precise geometry real brackets, fillets, and fastener holes instead of blocky placeholders.
@@ -64,7 +64,7 @@ individually sourced components.
 
 ---
 
-## June 23 — Design Phase: Final Review & Submission
+## June 23: Design Phase: Final Review & Submission
 **Hours: 2**
 
 - Finished the full design and reviewed it from all angles (iso, top, front, side) to confirm fit and clearances.
