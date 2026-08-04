@@ -4,16 +4,14 @@ A voice controlled autonomous mobile manipulator built from scratch. Dum-E is a 
 
 <img width="891" height="684" alt="Screenshot 2026-08-04 at 3 30 15 PM" src="https://github.com/user-attachments/assets/217c6ad9-1f26-4ea8-bd6a-377a9a5e44ae" />
 
-> **Status:** Design & build phase. The chassis and arm are designed from scratch and being fabricated from individually sourced components.
-
 ---
 
 ## Overview
 
-DumE is a robotic platform with two main sub-assemblies: a holonomic drive base and a 6 DOF arm. Both the chassis and the arm are designed and built from scratch from individually sourced aluminum, hardware, and 3D printed parts.
+DumE is a robotic platform with two main sub assemblies: a holonomic drive base and a 6 DOF arm. Both the chassis and the arm are designed and built from scratch from individually sourced aluminum, hardware, and 3D printed parts.
 
 - **Holonomic drive:** four mecanum wheels for omnidirectional movement (forward, strafe, and rotate in place).
-- **6-DOF arm:** six high-torque servos with a custom parallel-jaw gripper.
+- **6-DOF arm:** six high torque servos with a custom parallel jaw gripper.
 - **Stereo vision head:** dual Raspberry Pi cameras at a fixed baseline.
 - **Far-field audio:** ReSpeaker mic array plus an amplified speaker.
 
