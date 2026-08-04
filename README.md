@@ -2,7 +2,7 @@
 
 A voice controlled autonomous mobile manipulator built from scratch. Dum-E is a 6 DOF robotic arm mounted on a holonomic (mecanum) drive base named after Tony Stark's clumsy robot assistant.
 
-<img width="573" height="553" alt="Screenshot 2026-06-24 at 9 44 03 PM" src="https://github.com/user-attachments/assets/4e829d02-bca1-431c-990b-185d8edc2f24" />
+<img width="891" height="684" alt="Screenshot 2026-08-04 at 3 30 15 PM" src="https://github.com/user-attachments/assets/217c6ad9-1f26-4ea8-bd6a-377a9a5e44ae" />
 
 > **Status:** Design & build phase. The chassis and arm are designed from scratch and being fabricated from individually sourced components.
 
