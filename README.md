@@ -4,9 +4,9 @@ A voice controlled autonomous mobile manipulator built from scratch. Dum-E is a 
 
 <img width="891" height="684" alt="Screenshot 2026-08-04 at 3 30 15 PM" src="https://github.com/user-attachments/assets/217c6ad9-1f26-4ea8-bd6a-377a9a5e44ae" />
 
----
 
-## Overview
+
+## Overview and How it Works
 
 DumE is a robotic platform with two main sub assemblies: a holonomic drive base and a 6 DOF arm. Both the chassis and the arm are designed and built from scratch from individually sourced aluminum, hardware, and 3D printed parts.
 
@@ -16,6 +16,10 @@ DumE is a robotic platform with two main sub assemblies: a holonomic drive base 
 - **Far-field audio:** ReSpeaker mic array plus an amplified speaker.
 
 CAD files for the chassis, arm, and 3D printed parts are in the [`cad/`](cad/) folder.
+
+## Why?
+
+I have always been interested in Robotics and building this project can help me improve me skills. There are already many prebuilt things I can buy to help speed up this project but I want to make something actually worthwhile which is why I am building everything from scratch from individually sourced parts. I also wanted to make something cool!
 
 ## Bill of Materials
 
@@ -48,17 +52,6 @@ Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is re
 | Dupont jumper wire kit | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=dupont+jumper+wire+kit) |
 
 **Parts total: ~$459.27**.
-
-## Repository Structure
-
-```
-Dum-E/
-├── README.md      # this file
-├── Journal.md     # build log
-├── BOM.csv        # bill of materials
-├── cad/           # CAD files & 3D-print STLs
-└── images/        # photos & renders
-```
 
 ## Build Journal
 
