@@ -55,7 +55,7 @@ Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is re
 
 ## Build Journal
 
-Day by day progress is logged in [`Journal.md`](Journal.md).
+Day by day progress is logged in Journal.md.
 
 
 ## License
