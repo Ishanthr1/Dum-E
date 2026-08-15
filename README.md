@@ -27,7 +27,7 @@ Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is re
 
 | Item | Qty | Unit (USD) | Where to buy |
 |------|-----|-----------|--------------|
-| DS3218 20kg digital servo (2-pack) — arm joints | 3 | 27.99 | [Amazon](https://www.amazon.com/DS3218-Digital-Servo-Torque-Waterproof/dp/B07TKTQ2NZ) |
+| DS3218 20kg digital servo (2-pack) — arm joints | 3 | 28.99 | [Amazon](https://www.amazon.com/DS3218-Digital-Servo-Torque-Waterproof/dp/B07ZNMSP2C?th=1) |
 | PCA9685 16-channel servo driver | 1 | 14.95 | [Adafruit](https://www.adafruit.com/product/815) |
 | Micro servo (SG92R) — gripper actuator | 1 | 5.95 | [Adafruit](https://www.adafruit.com/product/169) |
 | 6061 aluminum sheet 3mm — arm links/brackets | 1 | 20.00 | [OnlineMetals](https://www.onlinemetals.com/en/buy/aluminum) |
@@ -51,7 +51,7 @@ Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is re
 | 3D printer filament (PETG 1kg) | 1 | 20.00 | [Amazon](https://www.amazon.com/s?k=PETG+filament+1kg) |
 | Dupont jumper wire kit | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=dupont+jumper+wire+kit) |
 
-**Parts total: ~$459.27**.
+**Parts total: ~$460.27**.
 
 ## Build Journal
 
