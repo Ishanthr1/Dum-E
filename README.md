@@ -25,32 +25,24 @@ I have always been interested in Robotics and building this project can help me 
 
 Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is required but is owned separately and not included in the total below.
 
-| Item | Qty | Unit (USD) | Where to buy |
-|------|-----|------------|--------------|
-| Hiwonder xArm1S 6DOF arm (unassembled) | 1 | 199.99 | [Amazon](https://www.amazon.com/Programming-Powerful-Intelligent-Featuring-Unassembled/dp/B08FT31C5N) |
-| MC200 mecanum chassis + 4 encoder motors | 1 | 73.99 | [Amazon](https://www.amazon.com/dp/B09KL37P43) |
-| Raspberry Pi Camera Module 3 (stereo pair) | 2 | 25.00 | [Adafruit](https://www.adafruit.com/product/5657) |
-| LiPo battery 3S 11.1V (XT60) | 1 | 4.77 | [AliExpress](https://www.aliexpress.us/item/3256806762759175.html?src=google&src=google&albch=shopping&acnt=708-803-3821&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&albagn=888888&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=en3256806762759175&ds_e_product_merchant_id=5355628560&ds_e_product_country=US&ds_e_product_language=en&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=20269108796&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=20273564092&gbraid=0AAAAAD6I-hETDiUDaWtz_Z-0xaOFPr1Lp&gclid=Cj0KCQjwzY7VBhDwARIsAFtPvBThP3IwVpRuctJi_x2r-Ql2LEhk8dY5lTHgFan8FBIkcilQX5TKBcwaAtlQEALw_wcB&gatewayAdapt=glo2usa) |
-| LiPo balance charger (3S) | 1 | 18.00 | [Amazon](https://www.amazon.com/s?k=lipo+3s+balance+charger) |
-| Buck converter 7.5V 6A — arm rail | 1 | 14.00 | [Amazon](https://www.amazon.com/s?k=DC-DC+buck+converter+7.5V+6A+adjustable) |
-| USB webcam — arm head camera | 1 | 15.00 | [Amazon](https://www.amazon.com/s?k=usb+webcam+1080p+mini) |
-| Powered USB hub | 1 | 15.00 | [Amazon](https://www.amazon.com/s?k=powered+usb+hub+3.0) |
-| ReSpeaker 2-Mics Pi HAT | 1 | 12.00 | [Seeed Studio](https://www.seeedstudio.com/ReSpeaker-2-Mics-Pi-HAT.html) |
-| microSD card 32GB high-speed | 1 | 12.00 | [Amazon](https://www.amazon.com/s?k=samsung+evo+select+32gb+microsd) |
-| ESP32 dev board — motor controller | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=esp32+devkit+v1) |
-| Buck converter 5V 5A (UBEC) | 1 | 9.00 | [Amazon](https://www.amazon.com/s?k=5V+5A+UBEC+buck+converter) |
-| XT60 connectors + power wiring | 1 | 8.00 | [Amazon](https://www.amazon.com/s?k=xt60+connector+wire) |
-| L298N dual H-bridge motor driver | 2 | 7.00 | [Amazon](https://www.amazon.com/s?k=L298N+motor+driver) |
-| Inline fuse holder + master switch | 1 | 6.00 | [Amazon](https://www.amazon.com/s?k=inline+fuse+holder+rocker+switch+12v) |
-| Raspberry Pi 5 active cooler | 1 | 10.00 | [Adafruit](https://www.adafruit.com/product/5815) |
-| MAX98357A I2S audio amplifier | 1 | 5.95 | [Adafruit](https://www.adafruit.com/product/3006) |
-| Speaker 3in 8 ohm 1W | 1 | 1.95 | [Adafruit](https://www.adafruit.com/product/1313) |
-| M3 socket-head screw + nut assortment | 1 | 13.00 | [Amazon](https://www.amazon.com/s?k=M3+socket+head+screw+nut+assortment) |
-| M3 brass standoff kit | 1 | 9.00 | [Amazon](https://www.amazon.com/s?k=M3+brass+standoff+kit) |
-| 3D printer filament (PETG 1kg) | 1 | 20.00 | [Amazon](https://www.amazon.com/s?k=PETG+filament+1kg) |
-| Dupont jumper wire kit | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=dupont+jumper+wire+kit) |
+| Item | Qty | Unit (USD) | Total | Where to buy |
+|------|-----|------------|-------|--------------|
+| Hiwonder xArm1S 6DOF arm (unassembled) | 1 | 199.99 | 199.99 | [Amazon](https://www.amazon.com/Programming-Powerful-Intelligent-Featuring-Unassembled/dp/B08FT31C5N) |
+| MC200 mecanum chassis + 4 encoder motors | 1 | 73.99 | 73.99 | [Amazon](https://www.amazon.com/dp/B09KL37P43) |
+| Raspberry Pi Camera Module 3 | 1 | 25.00 | 25.00 | [Adafruit](https://www.adafruit.com/product/5657) |
+| Buck converter 7.5V 6A — arm rail | 1 | 14.00 | 14.00 | [Amazon](https://www.amazon.com/s?k=DC-DC+buck+converter+7.5V+6A+adjustable) |
+| ReSpeaker 2-Mics Pi HAT | 1 | 13.99 | 13.99 | [Seeed Studio](https://www.seeedstudio.com/ReSpeaker-2-Mics-Pi-HAT.html) |
+| LiPo balance charger (3S) | 1 | 11.31 | 11.31 | [AliExpress](https://www.aliexpress.us/item/3256812621300649.html) |
+| Buck converter 5V 5A (UBEC) | 1 | 9.00 | 9.00 | [Amazon](https://www.amazon.com/s?k=5V+5A+UBEC+buck+converter) |
+| XT60 connectors + power wiring | 1 | 8.00 | 8.00 | [Amazon](https://www.amazon.com/s?k=xt60+connector+wire) |
+| Inline fuse holder + master switch | 1 | 6.00 | 6.00 | [Amazon](https://www.amazon.com/s?k=inline+fuse+holder+rocker+switch+12v) |
+| LiPo battery 3S 11.1V (XT60) | 1 | 4.77 | 4.77 | [AliExpress](https://www.aliexpress.us/item/3256806762759175.html) |
+| ESP32 dev board — motor controller | 1 | 3.82 | 3.82 | [AliExpress](https://www.aliexpress.us/item/3256805954241151.html) |
+| L298N dual H-bridge motor driver | 2 | 1.09 | 2.18 | [AliExpress](https://www.aliexpress.us/item/3256810579353544.html) |
 
-**Parts total: ~$520.88** (grant-funded core: ~$399.88 · self-funded: ~$121.00)
+**Parts total: $372.05**
+
+**Self-funded: ~$121.00 Includes M3 Hex Bolts, Filament, and more...)
 
 ## Build Journal
 
