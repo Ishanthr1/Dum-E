@@ -26,32 +26,31 @@ I have always been interested in Robotics and building this project can help me 
 Full parts list (also available as [`BOM.csv`](BOM.csv)). A Raspberry Pi 5 is required but is owned separately and not included in the total below.
 
 | Item | Qty | Unit (USD) | Where to buy |
-|------|-----|-----------|--------------|
-| DS3218 20kg digital servo (2-pack) — arm joints | 3 | 28.99 | [Amazon](https://www.amazon.com/DS3218-Digital-Servo-Torque-Waterproof/dp/B07ZNMSP2C?th=1) |
-| PCA9685 16-channel servo driver | 1 | 14.95 | [Adafruit](https://www.adafruit.com/product/815) |
-| Micro servo (SG92R) — gripper actuator | 1 | 5.95 | [Adafruit](https://www.adafruit.com/product/169) |
-| 6061 aluminum sheet 3mm — arm links/brackets | 1 | 20.00 | [OnlineMetals](https://www.onlinemetals.com/en/buy/aluminum) |
-| Mecanum wheel kit 80mm (4 wheels) | 1 | 19.60 | [DFRobot](https://www.dfrobot.com/product-2042.html) |
-| DC gear motor w/ encoder 12V (JGB37-520 type) | 4 | 13.00 | [Amazon](https://www.amazon.com/s?k=JGB37-520+12V+encoder+gear+motor) |
-| 6mm hex coupling (wheel-to-shaft) | 4 | 4.00 | [Amazon](https://www.amazon.com/s?k=6mm+hex+coupling+mecanum) |
-| L298N dual H-bridge motor driver | 2 | 7.00 | [Amazon](https://www.amazon.com/s?k=L298N+motor+driver) |
-| 6061 aluminum sheet 3mm — chassis plates | 1 | 22.00 | [OnlineMetals](https://www.onlinemetals.com/en/buy/aluminum) |
+|------|-----|------------|--------------|
+| Hiwonder xArm1S 6DOF arm (unassembled) | 1 | 199.99 | [Amazon](https://www.amazon.com/Programming-Powerful-Intelligent-Featuring-Unassembled/dp/B08FT31C5N) |
+| MC200 mecanum chassis + 4 encoder motors | 1 | 49.99 | [Amazon](https://www.amazon.com/dp/B09KL37P43) |
+| Raspberry Pi Camera Module 3 (stereo pair) | 2 | 25.00 | [Adafruit](https://www.adafruit.com/product/5657) |
 | LiPo battery 3S 11.1V (XT60) | 1 | 22.00 | [Amazon](https://www.amazon.com/s?k=3S+11.1V+lipo+battery+xt60) |
 | LiPo balance charger (3S) | 1 | 18.00 | [Amazon](https://www.amazon.com/s?k=lipo+3s+balance+charger) |
-| Buck converter / 5V 5A regulator | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=5V+5A+buck+converter) |
+| Buck converter 7.5V 6A — arm rail | 1 | 14.00 | [Amazon](https://www.amazon.com/s?k=DC-DC+buck+converter+7.5V+6A+adjustable) |
+| USB webcam — arm head camera | 1 | 15.00 | [Amazon](https://www.amazon.com/s?k=usb+webcam+1080p+mini) |
+| Powered USB hub | 1 | 15.00 | [Amazon](https://www.amazon.com/s?k=powered+usb+hub+3.0) |
+| ReSpeaker 2-Mics Pi HAT | 1 | 12.00 | [Seeed Studio](https://www.seeedstudio.com/ReSpeaker-2-Mics-Pi-HAT.html) |
+| microSD card 32GB high-speed | 1 | 12.00 | [Amazon](https://www.amazon.com/s?k=samsung+evo+select+32gb+microsd) |
+| ESP32 dev board — motor controller | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=esp32+devkit+v1) |
+| Buck converter 5V 5A (UBEC) | 1 | 9.00 | [Amazon](https://www.amazon.com/s?k=5V+5A+UBEC+buck+converter) |
 | XT60 connectors + power wiring | 1 | 8.00 | [Amazon](https://www.amazon.com/s?k=xt60+connector+wire) |
-| Raspberry Pi Camera Module 3 (stereo pair) | 2 | 25.00 | [Adafruit](https://www.adafruit.com/product/5657) |
-| ReSpeaker 4-Mic Array for Raspberry Pi | 1 | 24.90 | [Seeed Studio](https://www.seeedstudio.com/ReSpeaker-4-Mic-Array-for-Raspberry-Pi.html) |
-| Speaker 3in 8 ohm 1W | 1 | 1.95 | [Adafruit](https://www.adafruit.com/product/1313) |
+| L298N dual H-bridge motor driver | 2 | 7.00 | [Amazon](https://www.amazon.com/s?k=L298N+motor+driver) |
+| Inline fuse holder + master switch | 1 | 6.00 | [Amazon](https://www.amazon.com/s?k=inline+fuse+holder+rocker+switch+12v) |
+| Raspberry Pi 5 active cooler | 1 | 10.00 | [Adafruit](https://www.adafruit.com/product/5815) |
 | MAX98357A I2S audio amplifier | 1 | 5.95 | [Adafruit](https://www.adafruit.com/product/3006) |
+| Speaker 3in 8 ohm 1W | 1 | 1.95 | [Adafruit](https://www.adafruit.com/product/1313) |
 | M3 socket-head screw + nut assortment | 1 | 13.00 | [Amazon](https://www.amazon.com/s?k=M3+socket+head+screw+nut+assortment) |
-| Ball bearing assortment (608) | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=608+ball+bearing+assortment) |
-| Shaft collars / couplers assortment | 1 | 8.00 | [Amazon](https://www.amazon.com/s?k=shaft+collar+coupler+assortment) |
 | M3 brass standoff kit | 1 | 9.00 | [Amazon](https://www.amazon.com/s?k=M3+brass+standoff+kit) |
 | 3D printer filament (PETG 1kg) | 1 | 20.00 | [Amazon](https://www.amazon.com/s?k=PETG+filament+1kg) |
 | Dupont jumper wire kit | 1 | 10.00 | [Amazon](https://www.amazon.com/s?k=dupont+jumper+wire+kit) |
 
-**Parts total: ~$460.27**.
+**Parts total: ~$520.88** (grant-funded core: ~$399.88 · self-funded: ~$121.00)
 
 ## Build Journal
 
